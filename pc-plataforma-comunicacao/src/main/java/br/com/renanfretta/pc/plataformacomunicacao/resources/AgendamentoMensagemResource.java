@@ -45,7 +45,7 @@ public class AgendamentoMensagemResource {
 	}
 	
 	@GetMapping(value = "/cancelar/{id}")
-	public ResponseEntity<AgendamentoMensagemOutputDTO> cancelarById(@PathVariable Long id) {
+	public ResponseEntity<AgendamentoMensagemOutputDTO> cancelarById(@PathVariable Long id) throws ErroTratadoRestException {
 		LOGGER.trace("AgendamentoMensagemResource/cancelarById(" + id + ") foi chamado");
 		try {
 			AgendamentoMensagemOutputDTO outputDTO = service.cancelarById(id);
