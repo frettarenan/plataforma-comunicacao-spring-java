@@ -77,6 +77,9 @@ public class AgendamentoMensagemService {
 
 		validaJaCancelado(entity);
 		validaJaEnviado(entity);
+		// FIXME: Possíveis regras de negócio que precisam ser validadas com o Analista responsável:
+		// 1. Verificar quando o agendamento requer telefone, validar se o telefone está cadastrado na tabela de pessoa
+		// 2. Verificar quando o agendamento requer e-mail, validar se o e-mail está cadastrado na tabela de pessoa
 
 		entity.setCancelado(true);
 		entity.setDataHoraCancelamento(new Date());
