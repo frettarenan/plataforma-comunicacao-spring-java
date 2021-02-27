@@ -57,7 +57,7 @@ public class AgendamentoMensagemResource {
 	}
 	
 	@GetMapping(value = "/{id}/status")
-	public ResponseEntity<AgendamentoMensagemStatusOutputDTO> statusById(@PathVariable Long id) {
+	public ResponseEntity<AgendamentoMensagemStatusOutputDTO> statusById(@PathVariable Long id) throws ErroTratadoRestException {
 		LOGGER.trace("AgendamentoMensagemResource/statusById(" + id + ") foi chamado");
 		try {
 			AgendamentoMensagemStatusOutputDTO outputDTO = service.statusById(id);

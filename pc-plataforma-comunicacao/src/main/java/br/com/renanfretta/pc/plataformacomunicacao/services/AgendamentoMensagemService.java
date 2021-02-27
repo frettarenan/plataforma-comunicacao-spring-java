@@ -18,6 +18,7 @@ import br.com.renanfretta.pc.plataformacomunicacao.dtos.agendamentomensagem.Agen
 import br.com.renanfretta.pc.plataformacomunicacao.dtos.agendamentomensagem.AgendamentoMensagemStatusOutputDTO;
 import br.com.renanfretta.pc.plataformacomunicacao.entities.AgendamentoMensagem;
 import br.com.renanfretta.pc.plataformacomunicacao.enums.MessagesPropertyEnum;
+import br.com.renanfretta.pc.plataformacomunicacao.enums.StatusEnvioMensagemEnum;
 import br.com.renanfretta.pc.plataformacomunicacao.exceptions.ErroTratadoRestException;
 import br.com.renanfretta.pc.plataformacomunicacao.repositories.AgendamentoMensagemRepository;
 
@@ -97,9 +98,22 @@ public class AgendamentoMensagemService {
 			throw new ErroTratadoRestException(messagesProperty.getMessage(MessagesPropertyEnum.RN__REGISTRO_AGENDAMENTO_MENSAGEM_CANCELAMENTO_REGISTRO_JA_CANCELADO));
 	}
 
-	public AgendamentoMensagemStatusOutputDTO statusById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public AgendamentoMensagemStatusOutputDTO statusById(Long idAgendamentoMensagem) throws ErroTratadoRestException {
+		// Atenção: As consultas foram criadas para serem executadas na ordem definida abaixo
+		// Caso contrário precisa alterar os SQLs para deixá-los mais complexos
+		AgendamentoMensagem entity = repository.findById(idAgendamentoMensagem).orElseThrow(() -> new ErroTratadoRestException(messagesProperty.getMessage(MessagesPropertyEnum.ERRO__REGISTRO_NAO_ENCONTRADO_ENTIDADE_AGENDAMENTO_MENSAGEM)));
+		if (entity.isCancelado())
+			return AgendamentoMensagemStatusOutputDTO.builder().id(idAgendamentoMensagem).status(StatusEnvioMensagemEnum.CANCELADA.getStatus()).build();
+		
+		Long total = logEnvioMensagemService.countMensagensEnviadasByIdAgendamentoMensagem(idAgendamentoMensagem);
+		if (total > 0)
+			return AgendamentoMensagemStatusOutputDTO.builder().id(idAgendamentoMensagem).status(StatusEnvioMensagemEnum.ENVIADA.getStatus()).build();
+		
+		total = logEnvioMensagemService.countMensagensErroEnvioByIdAgendamentoMensagem(idAgendamentoMensagem);
+		if (total > 0)
+			return AgendamentoMensagemStatusOutputDTO.builder().id(idAgendamentoMensagem).status(StatusEnvioMensagemEnum.ERRO_AO_ENVIAR.getStatus()).build();
+		
+		return AgendamentoMensagemStatusOutputDTO.builder().id(idAgendamentoMensagem).status(StatusEnvioMensagemEnum.AGENDADA.getStatus()).build();
 	}
 
 }

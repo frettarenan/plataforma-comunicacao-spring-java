@@ -3,5 +3,7 @@ package br.com.renanfretta.pc.plataformacomunicacao.repositories.logenviomensage
 public interface LogEnvioMensagemRepositoryCustom {
 
 	Long countMensagensEnviadasByIdAgendamentoMensagem(Long idAgendamentoMensagem);
+	
+	Long countMensagensErroEnvioByIdAgendamentoMensagem(Long id);
 
 }

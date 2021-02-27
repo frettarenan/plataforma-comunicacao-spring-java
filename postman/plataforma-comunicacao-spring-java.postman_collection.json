@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "d088b45c-47df-4b99-9cac-940c80f88e04",
+		"name": "plataforma-comunicacao-spring-java",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "agendamento-mensagem",
+			"item": [
+				{
+					"name": "agendar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dataHora\" : \"2021-07-15 07:00\",\n    \"pessoaDestinatario\": {\n        \"id\" : 1\n    },\n    \"formatoMensagem\" : {\n        \"id\" : 1\n    },\n    \"mensagem\" : \"Feliz aniversário! Como forma de agradecimento, hoje você tem 10%, aproveite!!!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/agendamento-mensagem",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agendamento-mensagem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancelar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/agendamento-mensagem/cancelar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agendamento-mensagem",
+								"cancelar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/agendamento-mensagem/1/status",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agendamento-mensagem",
+								"1",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

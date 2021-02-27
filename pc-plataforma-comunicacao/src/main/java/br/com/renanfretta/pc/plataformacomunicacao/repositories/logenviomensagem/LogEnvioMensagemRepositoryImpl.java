@@ -32,4 +32,17 @@ public class LogEnvioMensagemRepositoryImpl implements LogEnvioMensagemRepositor
 		return query.fetchOne();
 	}
 
+	@Override
+	public Long countMensagensErroEnvioByIdAgendamentoMensagem(Long idAgendamentoMensagem) {
+		JPAQuery<Long> query = new JPAQuery<>(em);
+
+		query.select(_logEnvioMensagem.count());
+		query.from(_logEnvioMensagem);
+		query.join(_logEnvioMensagem.agendamentoMensagem, _agendamentoMensagem);
+		query.where(_agendamentoMensagem.id.eq(idAgendamentoMensagem));
+		query.where(_logEnvioMensagem.enviada.eq(false));
+
+		return query.fetchOne();
+	}
+
 }

@@ -16,5 +16,9 @@ public class LogEnvioMensagemService {
 	public Long countMensagensEnviadasByIdAgendamentoMensagem(Long id) {
 		return repository.countMensagensEnviadasByIdAgendamentoMensagem(id);
 	}
+	
+	public Long countMensagensErroEnvioByIdAgendamentoMensagem(Long id) {
+		return repository.countMensagensErroEnvioByIdAgendamentoMensagem(id);
+	}
 
 }
