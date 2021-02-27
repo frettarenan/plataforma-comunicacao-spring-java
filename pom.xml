@@ -31,9 +31,19 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
+				<groupId>br.com.renanfretta.pc-plataforma-comunicacao-parent</groupId>
+				<artifactId>pc-commons</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>ma.glasnost.orika</groupId>
 				<artifactId>orika-core</artifactId>
 				<version>${ma.glasnost.orika.orika-core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

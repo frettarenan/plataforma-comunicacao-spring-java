@@ -38,7 +38,7 @@ public class AgendamentoMensagem implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_pessoa_destinatario")
-	private Pessoa pessoa;
+	private Pessoa pessoaDestinatario;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_formato_mensagem")
