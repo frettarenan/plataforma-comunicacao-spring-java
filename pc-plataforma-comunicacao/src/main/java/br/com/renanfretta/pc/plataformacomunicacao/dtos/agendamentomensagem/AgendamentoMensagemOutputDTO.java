@@ -21,16 +21,21 @@ import lombok.NoArgsConstructor;
 public class AgendamentoMensagemOutputDTO implements Serializable {
 
 	private static final long serialVersionUID = -4181339596768386714L;
-	
+
 	private Long id;
-	
+
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private Date dataHora;
-	
+
 	private PessoaOutputDTO pessoaDestinatario;
-	
+
 	private FormatoMensagemOutputDTO formatoMensagem;
-	
+
 	private String mensagem;
+
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date dataHoraCancelamento;
+
+	private boolean cancelado;
 
 }

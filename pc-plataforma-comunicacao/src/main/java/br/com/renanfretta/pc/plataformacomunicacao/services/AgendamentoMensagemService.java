@@ -64,4 +64,13 @@ public class AgendamentoMensagemService {
 		return outputDTO;
 	}
 
+	public AgendamentoMensagemOutputDTO cancelarById(Long id) {
+		// TODO Auto-generated method stub
+		
+		// FIXME: Implementar regra: não permitido cancelar registro já cancelado
+		// FIXME: Implementar regra: não permitido cancelar registro já enviado
+		
+		return null;
+	}
+
 }

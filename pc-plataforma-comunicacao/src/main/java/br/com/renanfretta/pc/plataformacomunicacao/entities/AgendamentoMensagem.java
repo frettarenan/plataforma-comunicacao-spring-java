@@ -51,5 +51,10 @@ public class AgendamentoMensagem implements Serializable {
 	private FormatoMensagem formatoMensagem;
 	
 	private String mensagem;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataHoraCancelamento;
+	
+	private boolean cancelado;
 
 }

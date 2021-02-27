@@ -5,6 +5,8 @@ CREATE TABLE `agendamento_mensagem` (
   `mensagem` varchar(255) NOT NULL,
   `id_formato_mensagem` bigint(20) NOT NULL,
   `id_pessoa_destinatario` bigint(20) NOT NULL,
+  `data_hora_cancelamento` datetime(6) DEFAULT NULL,
+  `cancelado` bit(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `FK_agendamento_mensagem_formato_mensagem` (`id_formato_mensagem`),
   KEY `FK_agendamento_mensagem_pessoa_destinatario` (`id_pessoa_destinatario`),
