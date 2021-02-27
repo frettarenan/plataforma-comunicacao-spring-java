@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum MessagesPropertyEnum {
-	
+
 	// Erros gerais
 	ERRO__COMUNICACAO("erro.comunicacao"), //
 	ERRO__REGISTRO_NAO_EXISTE("erro.registro-nao-existe"), //
@@ -16,7 +16,10 @@ public enum MessagesPropertyEnum {
 
 	ERRO__REGISTRO_NAO_ENCONTRADO_ENTIDADE_AGENDAMENTO_MENSAGEM("erro.registro-nao-encontrado-entidade-agendamento-mensagem"), //
 	ERRO__REGISTRO_NAO_ENCONTRADO_ENTIDADE_FORMATO_MENSAGEM("erro.registro-nao-encontrado-entidade-formato-mensagem"), //
-	ERRO__REGISTRO_NAO_ENCONTRADO_ENTIDADE_PESSOA("erro.registro-nao-encontrado-entidade-pessoa");
+	ERRO__REGISTRO_NAO_ENCONTRADO_ENTIDADE_PESSOA("erro.registro-nao-encontrado-entidade-pessoa"), //
+
+	RN__REGISTRO_AGENDAMENTO_MENSAGEM_CANCELAMENTO_REGISTRO_JA_CANCELADO("rn.registro-agendamento-mensagem-cancelamento-registro-ja-cancelado"), //
+	RN__REGISTRO_AGENDAMENTO_MENSAGEM_CANCELAMENTO_REGISTRO_JA_ENVIADO("rn.registro-agendamento-mensagem-cancelamento-registro-ja-enviado"); //
 
 	private String key;
 
