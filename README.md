@@ -3,7 +3,7 @@
 Objetivo:
 * Resolver o problema proposto descrito neste documento: https://docs.google.com/document/d/1Q8JV2PxzL-QFN5eHcJqA75jOlD23_Q8JvJ_UO13gIgI
 
-# Minhas Considerações
+## Minhas Considerações
 * Disponíveis aqui neste documento: https://docs.google.com/document/d/16Q9voorz7U4nD4Rcm5MqUQ3pgFoyaBQ-57iNfwjGuVs
 
 ## Configuração do Postman
