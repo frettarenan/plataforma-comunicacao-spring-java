@@ -55,6 +55,8 @@ public class AgendamentoMensagemEndpointTest {
 	@BeforeAll
 	private static void beforeAll() {
 	}
+	
+	// FIXME: implementar todo o restante dos testes unitários
 
 	@Nested
 	@DisplayName("Method: POST Path: /agendamento-mensagem")
