@@ -1,5 +1,7 @@
 package br.com.renanfretta.pc.plataformacomunicacao.services;
 
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import br.com.renanfretta.pc.plataformacomunicacao.configs.MessagesProperty;
 import br.com.renanfretta.pc.plataformacomunicacao.configs.OrikaMapper;
 import br.com.renanfretta.pc.plataformacomunicacao.dtos.agendamentomensagem.AgendamentoMensagemInputDTO;
 import br.com.renanfretta.pc.plataformacomunicacao.dtos.agendamentomensagem.AgendamentoMensagemOutputDTO;
+import br.com.renanfretta.pc.plataformacomunicacao.dtos.agendamentomensagem.AgendamentoMensagemStatusOutputDTO;
 import br.com.renanfretta.pc.plataformacomunicacao.entities.AgendamentoMensagem;
 import br.com.renanfretta.pc.plataformacomunicacao.enums.MessagesPropertyEnum;
 import br.com.renanfretta.pc.plataformacomunicacao.exceptions.ErroTratadoRestException;
@@ -64,12 +67,31 @@ public class AgendamentoMensagemService {
 		return outputDTO;
 	}
 
-	public AgendamentoMensagemOutputDTO cancelarById(Long id) {
+	public AgendamentoMensagemOutputDTO cancelarById(Long id) throws ErroTratadoRestException {
+		// Agendamento de mensagem é valido?
+		AgendamentoMensagem entity = repository.findById(id).orElseThrow(() -> new ErroTratadoRestException(messagesProperty.getMessage(MessagesPropertyEnum.ERRO__REGISTRO_NAO_ENCONTRADO_ENTIDADE_AGENDAMENTO_MENSAGEM)));
+		
+		validaJaCancelado(entity); 
+		validaJaEnviado(entity);
+		
+		entity.setCancelado(true);
+		entity.setDataHoraCancelamento(new Date());
+		repository.save(entity);
+		
+		AgendamentoMensagemOutputDTO dtoOutput = findById(id);
+		return dtoOutput;
+	}
+
+	private void validaJaEnviado(AgendamentoMensagem entity) {
 		// TODO Auto-generated method stub
-		
-		// FIXME: Implementar regra: não permitido cancelar registro já cancelado
-		// FIXME: Implementar regra: não permitido cancelar registro já enviado
-		
+	}
+
+	private void validaJaCancelado(AgendamentoMensagem entity) {
+		// TODO Auto-generated method stub
+	}
+
+	public AgendamentoMensagemStatusOutputDTO statusById(Long id) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

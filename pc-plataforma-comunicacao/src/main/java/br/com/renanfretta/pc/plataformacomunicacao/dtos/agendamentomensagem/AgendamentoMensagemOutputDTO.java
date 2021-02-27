@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AgendamentoMensagemOutputDTO implements Serializable {
 
-	private static final long serialVersionUID = -4181339596768386714L;
+	private static final long serialVersionUID = -71948082294320446L;
 
 	private Long id;
 

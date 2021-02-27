@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.renanfretta.pc.plataformacomunicacao.dtos.agendamentomensagem.AgendamentoMensagemInputDTO;
 import br.com.renanfretta.pc.plataformacomunicacao.dtos.agendamentomensagem.AgendamentoMensagemOutputDTO;
+import br.com.renanfretta.pc.plataformacomunicacao.dtos.agendamentomensagem.AgendamentoMensagemStatusOutputDTO;
 import br.com.renanfretta.pc.plataformacomunicacao.exceptions.ErroTratadoRestException;
 import br.com.renanfretta.pc.plataformacomunicacao.services.AgendamentoMensagemService;
 
@@ -51,6 +52,18 @@ public class AgendamentoMensagemResource {
 			return ResponseEntity.ok(outputDTO);
 		} catch (NoSuchElementException e) {
 			LOGGER.warn("AgendamentoMensagemResource/cancelarById(" + id + ") NoSuchElementException");
+			return ResponseEntity.badRequest().build();
+		}
+	}
+	
+	@GetMapping(value = "/{id}/status")
+	public ResponseEntity<AgendamentoMensagemStatusOutputDTO> statusById(@PathVariable Long id) {
+		LOGGER.trace("AgendamentoMensagemResource/statusById(" + id + ") foi chamado");
+		try {
+			AgendamentoMensagemStatusOutputDTO outputDTO = service.statusById(id);
+			return ResponseEntity.ok(outputDTO);
+		} catch (NoSuchElementException e) {
+			LOGGER.warn("AgendamentoMensagemResource/statusById(" + id + ") NoSuchElementException");
 			return ResponseEntity.badRequest().build();
 		}
 	}
