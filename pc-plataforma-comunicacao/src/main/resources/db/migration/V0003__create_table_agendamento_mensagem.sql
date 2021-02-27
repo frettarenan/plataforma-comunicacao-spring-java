@@ -1,5 +1,6 @@
 CREATE TABLE `agendamento_mensagem` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `data_hora_criacao` datetime(6) NOT NULL,
   `data_hora` datetime(6) NOT NULL,
   `mensagem` varchar(255) NOT NULL,
   `id_formato_mensagem` bigint(20) NOT NULL,
